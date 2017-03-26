@@ -1,7 +1,9 @@
+require_relative 'pieces'
 class Board
-  attr_reader :rows
+    attr_reader :rows
     def initialize
-        @rows = Array.new(8) { Array.new(8) }
+        @null_piece = NullPiece.instance
+        @rows = Array.new(8) { Array.new(8) { @null_piece } }
     end
 
     def [](pos)
@@ -24,5 +26,11 @@ class Board
 
     def valid_pos?(pos)
         pos.all? { |coord| coord.between?(0, 7) }
+    end
+
+    def add_piece(piece, pos)
+        raise 'position not empty' unless empty?(pos)
+
+        self[pos] = piece
     end
 end

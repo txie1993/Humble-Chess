@@ -1,4 +1,4 @@
-module Stepable
+module Step
   def moves
     move_diffs.each_with_object([]) do |dx, dy, moves|
       cur_x, cur_y = pos

@@ -2,7 +2,7 @@ require_relative 'piece'
 require_relative 'slide'
 
 class Rook < Piece
-  include Slideable
+  include Slide
 
   def symbol
     'R'

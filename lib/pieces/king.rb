@@ -2,7 +2,7 @@ require_relative 'piece'
 require_relative 'step'
 
 class King < Piece
-  include Stepable
+  include Step
 
   def symbol
     'K'

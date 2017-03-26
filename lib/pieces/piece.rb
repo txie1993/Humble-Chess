@@ -11,7 +11,13 @@ class Piece
   end
 
   def to_s
-    " #{symbol} "
+    if @color == :black
+      color_tag = 'b'
+    elsif @color == :white
+      color_tag = 'w'
+    end
+
+    "#{color_tag}#{symbol} "
   end
 
   def empty?
