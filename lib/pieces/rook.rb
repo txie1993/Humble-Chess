@@ -2,19 +2,19 @@ require_relative 'piece'
 require_relative 'slide'
 
 class Rook < Piece
-  include Slide
+    include Slide
 
-  def symbol
-    'R'
-  end
+    def symbol
+        'R'
+    end
 
-  def name
-    'Rook'
-  end
+    def name
+        'Rook'
+    end
 
-  private
+    private
 
-  def move_dirs
-    horizontal_dirs
-  end
+    def move_dirs
+        horizontal_dirs
+    end
 end

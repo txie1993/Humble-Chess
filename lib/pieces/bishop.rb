@@ -2,19 +2,19 @@ require_relative 'piece'
 require_relative 'slide'
 
 class Bishop < Piece
-  include Slide
+    include Slide
 
-  def symbol
-    'B'
-  end
+    def symbol
+        'B'
+    end
 
-  def name
-    'Bishop'
-  end
+    def name
+        'Bishop'
+    end
 
-  private
+    private
 
-  def move_dirs
-    diagonal_dirs
-  end
+    def move_dirs
+        diagonal_dirs
+    end
 end

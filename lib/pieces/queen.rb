@@ -2,19 +2,19 @@ require_relative 'piece'
 require_relative 'slide'
 
 class Queen < Piece
-  include Slide
+    include Slide
 
-  def symbol
-    'Q'
-  end
+    def symbol
+        'Q'
+    end
 
-  def name
-    'Queen'
-  end
+    def name
+        'Queen'
+    end
 
-  private
+    private
 
-  def move_dirs
-    horizontal_dirs + diagonal_dirs
-  end
+    def move_dirs
+        horizontal_dirs + diagonal_dirs
+    end
 end

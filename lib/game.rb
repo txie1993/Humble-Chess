@@ -6,9 +6,9 @@ class Game
     end
 
     def play
-      set_board
-      color = get_current_color
-      @board.print_moves(color)
+        set_board
+        color = get_current_color
+        @board.print_moves(color)
     end
 
     def show_board
@@ -38,7 +38,7 @@ class Game
     end
 
     def get_command
-        puts 'Enter a valid 4-character string (i.e. "c3bn" will place a black knight at C3). Type "stop" to finish setting up. Letters must be lowercase.'
+        puts 'Enter a valid 4-character string (i.e. "c3bn" will place a black knight at C3). Type "stop" to finish setting up. Letters must be lowercase. Note that black starts at the top of the board and white at the bottom.'
         command = gets.chomp
         return command if command == 'stop'
         @board.parse(command)
@@ -58,6 +58,6 @@ class Game
         end
     end
 end
-
-g = Game.new
-g.play
+#
+# g = Game.new
+# g.play

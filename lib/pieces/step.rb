@@ -1,19 +1,19 @@
 module Step
-  def moves
-    move_diffs.each_with_object([]) do |diff, moves|
-      dx, dy = diff
-      cur_x, cur_y = pos
-      pos = [cur_x + dx, cur_y + dy]
+    def moves
+        moves = []
+        move_diffs.each do |diff|
+            i, j = diff
+            cur_x, cur_y = pos
+            pos = [cur_x + i, cur_y + j]
 
-      next unless board.valid_pos?(pos)
+            next unless board.valid_pos?(pos)
 
-      if board.empty?(pos) || board[pos].color != color
-        moves << pos
-      end
+            moves << pos if board.empty?(pos) || board.enemy?(pos, color)
+        end
+        moves
     end
-  end
 
-  private
+    private
 
-  def move_diffs; end
+    def move_diffs; end
 end
