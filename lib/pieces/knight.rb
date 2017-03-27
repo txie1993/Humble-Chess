@@ -5,7 +5,11 @@ class Knight < Piece
   include Step
 
   def symbol
-    'k'
+    'N'
+  end
+
+  def name
+    'Knight'
   end
 
   private

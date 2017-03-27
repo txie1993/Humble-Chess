@@ -8,6 +8,10 @@ class Bishop < Piece
     'B'
   end
 
+  def name
+    'Bishop'
+  end
+
   private
 
   def move_dirs

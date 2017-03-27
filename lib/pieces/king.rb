@@ -8,6 +8,10 @@ class King < Piece
     'K'
   end
 
+  def name
+    'King'
+  end
+
   private
 
   def move_diffs

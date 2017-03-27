@@ -6,6 +6,10 @@ class Pawn < Piece
     'P'
   end
 
+  def name
+    'Pawn'
+  end
+
   def moves
     forward_steps + side_attacks
   end

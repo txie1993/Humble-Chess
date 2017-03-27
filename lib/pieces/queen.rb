@@ -8,6 +8,10 @@ class Queen < Piece
     'Q'
   end
 
+  def name
+    'Queen'
+  end
+
   private
 
   def move_dirs

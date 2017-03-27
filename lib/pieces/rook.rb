@@ -8,6 +8,10 @@ class Rook < Piece
     'R'
   end
 
+  def name
+    'Rook'
+  end
+
   private
 
   def move_dirs
