@@ -58,7 +58,7 @@ describe Board do
     end
 
     describe '#moves_to_coords' do
-        it 'translates array of array locations to chessboard coords' do
+        it 'translates array of array locations to a sorted array of chessboard coords' do
             expect(board.moves_to_coords([[0, 0], [7, 7]])).to eq(['a1', 'h8'])
         end
     end
