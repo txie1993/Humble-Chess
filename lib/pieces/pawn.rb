@@ -10,7 +10,7 @@ class Pawn < Piece
     end
 
     def moves
-        forward_steps + side_attacks
+        forward_steps + diag_moves
     end
 
     private
@@ -36,17 +36,17 @@ class Pawn < Piece
         steps
     end
 
-    def side_attacks
-        i, j = pos
+    def diag_moves
+        row, col = pos
+        new_row = row + move_dir
+        moves = []
 
-        side_moves = [[i + move_dir, j - 1], [i + move_dir, j + 1]]
-
-        side_moves.select do |new_pos|
-            next false unless board.valid_pos?(new_pos)
-            next false if board.empty?(new_pos)
-
-            threatened_piece = board[new_pos]
-            threatened_piece && threatened_piece.color != color
+        [1, -1].each do |diag|
+            pos = [new_row, col + diag]
+            next if board[pos].empty?
+            moves << pos if board.enemy?(pos, color)
         end
+
+        moves
     end
 end

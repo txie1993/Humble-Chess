@@ -56,6 +56,7 @@ class Board
     end
 
     def enemy?(pos, color)
+        return false unless valid_pos?(pos)
         self[pos].color != color
     end
 

@@ -24,4 +24,6 @@ class Piece
     end
 
     def symbol; end
+
+    def name; end
 end
