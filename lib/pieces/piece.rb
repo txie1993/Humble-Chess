@@ -9,6 +9,10 @@ class Piece
         board.add_piece(self, pos)
     end
 
+    def has_moves?
+        !moves.empty?
+    end
+
     def to_s
         if @color == :black
             color_tag = 'b'

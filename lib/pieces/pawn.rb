@@ -43,6 +43,7 @@ class Pawn < Piece
 
         [1, -1].each do |diag|
             pos = [new_row, col + diag]
+            next unless board.valid_pos?(pos)
             next if board[pos].empty?
             moves << pos if board.enemy?(pos, color)
         end

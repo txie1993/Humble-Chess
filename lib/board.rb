@@ -60,6 +60,40 @@ class Board
         self[pos].color != color
     end
 
+    def set_default_board
+        %w(a b g h).each_with_index do |row, idx|
+            (0..7).each do |space|
+                command = ''
+
+                color = idx < 2 ? 'b' : 'w'
+
+                type = if idx.between?(1, 2)
+                           'p'
+                       else
+                           position_to_piece(space)
+                       end
+
+                command = "#{row}#{space + 1}#{color}#{type}"
+                parse(command)
+            end
+        end
+    end
+
+    def position_to_piece(num)
+        case num
+        when 0, 7
+            'r'
+        when 1, 6
+            'n'
+        when 2, 5
+            'b'
+        when 3
+            'k'
+        when 4
+            'q'
+        end
+    end
+
     def letter_to_piece(c)
         case c
         when 'k'
@@ -82,20 +116,20 @@ class Board
         "#{LETTERS[i]}#{j + 1}"
     end
 
+    def moves_to_coords(moves)
+        coords = moves.map { |move| pos_to_coord(move) }
+        coords.sort
+    end
+
     def print_moves(color)
         @rows.each do |row|
             row.each do |piece|
                 next if piece.empty?
-                if piece.color == color
+                if piece.color == color && piece.has_moves?
                     puts "The #{piece.color} #{piece.name} at #{pos_to_coord(piece.pos)} can move to the following:"
                     p moves_to_coords(piece.moves)
                 end
             end
         end
-    end
-
-    def moves_to_coords(moves)
-        coords = moves.map { |move| pos_to_coord(move) }
-        coords.sort
     end
 end

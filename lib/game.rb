@@ -30,23 +30,31 @@ class Game
     end
 
     def set_board
-        puts 'Enter a valid 4-character string (i.e. "c3bn" will place a black knight at C3). Type "stop" to finish setting up. Letters must be lowercase. Note that black starts at the top of the board and white at the bottom.'
+        puts 'Enter a valid 4-character string (i.e. "c3bn" will place a black knight at C3). Type "stop" to finish setting up, or type "default" for a default config. Letters must be lowercase. Note that black starts at the top of the board and white at the bottom.'
         loop do
             show_board
             command = get_command
             break if command == 'stop'
+
+            default_board if command == 'default'
         end
     end
 
+    def default_board
+        @board = Board.new
+        @board.set_default_board
+        show_board
+    end
+
     def get_command
-        puts 'Enter a valid 4-character string:'
+        puts 'Enter a valid 4-character string, "stop", or "default":'
         command = gets.chomp
-        return command if command == 'stop'
+        return command if command == 'stop' || command == 'default'
         @board.parse(command)
     end
 
     def get_current_color
-      puts "Which color's turn is it currently? (w/b) Letters must be lowercase."
+        puts "Which color's turn is it currently? (w/b) Letters must be lowercase."
         loop do
             current_turn = gets.chomp
             if current_turn == 'w'
@@ -60,5 +68,5 @@ class Game
     end
 end
 
-# g = Game.new
-# g.play
+g = Game.new
+g.play
