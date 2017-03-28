@@ -61,20 +61,12 @@ class Board
     end
 
     def set_default_board
-        %w(a b g h).each_with_index do |row, idx|
-            (0..7).each do |space|
-                command = ''
-
-                color = idx < 2 ? 'b' : 'w'
-
-                type = if idx.between?(1, 2)
-                           'p'
-                       else
-                           position_to_piece(space)
-                       end
-
-                command = "#{row}#{space + 1}#{color}#{type}"
-                parse(command)
+        [0, 1, 6, 7].each do |row|
+            (0..7).each do |col|
+                pos = [row, col]
+                color = row < 2 ? :black : :white
+                piece_type = row.between?(1, 6) ? Pawn : position_to_piece(col)
+                piece_type.new(color, self, pos)
             end
         end
     end
@@ -82,15 +74,15 @@ class Board
     def position_to_piece(num)
         case num
         when 0, 7
-            'r'
+            Rook
         when 1, 6
-            'n'
+            Knight
         when 2, 5
-            'b'
+            Bishop
         when 3
-            'k'
+            King
         when 4
-            'q'
+            Queen
         end
     end
 

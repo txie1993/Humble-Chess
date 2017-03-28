@@ -34,16 +34,14 @@ class Game
         loop do
             show_board
             command = get_command
-            break if command == 'stop'
-
             default_board if command == 'default'
+            break if command == 'stop'
         end
     end
 
     def default_board
         @board = Board.new
         @board.set_default_board
-        show_board
     end
 
     def get_command
