@@ -2,9 +2,9 @@ module Step
     def moves
         moves = []
         move_diffs.each do |diff|
-            i, j = diff
-            cur_x, cur_y = pos
-            pos = [cur_x + i, cur_y + j]
+            diff_x, diff_y = diff
+            pos_x, pos_y = pos
+            pos = [pos_x + diff_x, pos_y + diff_y]
 
             next unless board.valid_pos?(pos)
 

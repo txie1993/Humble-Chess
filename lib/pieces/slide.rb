@@ -24,12 +24,12 @@ module Slide
     def move_dirs; end
 
     def move_around(i, j)
-        cur_x, cur_y = pos
+        pos_x, pos_y = pos
         moves = []
         loop do
-            cur_x += i
-            cur_y += j
-            pos = [cur_x, cur_y]
+            pos_x += i
+            pos_y += j
+            pos = [pos_x, pos_y]
 
             break unless board.valid_pos?(pos)
 
