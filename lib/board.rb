@@ -33,20 +33,6 @@ class Board
         self[pos] = piece if empty?(pos)
     end
 
-    def parse(command)
-        if valid_command?(command)
-            row = LETTERS.index(command[0])
-            col = command[1].to_i - 1
-            pos = [row, col]
-            color = command[2] == 'w' ? :white : :black
-            piece_type = letter_to_piece(command[3])
-
-            piece_type.new(color, self, pos)
-        else
-            puts 'Invalid command, try again.'
-        end
-    end
-
     def valid_command?(command)
         return false unless LETTERS.include?(command[0])
         return false unless command[1].to_i.between?(1, 8)
@@ -68,6 +54,20 @@ class Board
                 piece_type = row.between?(1, 6) ? Pawn : position_to_piece(col)
                 piece_type.new(color, self, pos)
             end
+        end
+    end
+
+    def parse(command)
+        if valid_command?(command)
+            row = LETTERS.index(command[0])
+            col = command[1].to_i - 1
+            pos = [row, col]
+            color = command[2] == 'w' ? :white : :black
+            piece_type = letter_to_piece(command[3])
+
+            piece_type.new(color, self, pos)
+        else
+            puts 'Invalid command, try again.'
         end
     end
 
